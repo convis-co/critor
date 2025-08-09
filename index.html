@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Critor — Offline. Unbreakable. Yours.</title>
+  <meta name="description" content="Critor Guardian 1.0 launches soon — hardware‑grade security, pocket‑sized freedom." />
+  <meta property="og:title" content="Critor — Offline. Unbreakable. Yours." />
+  <meta property="og:description" content="Critor Guardian 1.0 launches soon — hardware‑grade security, pocket‑sized freedom." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#02ff00" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://www.dl.dropboxusercontent.com/scl/fi/boiwh2zb2wvhu9ia9tpt4/Favicon.png?rlkey=h33e9i2zy7lamm1nytphxgixy&st=q1pn2d50&dl=0" />
+
+  <!-- Single-file landing page. No wallet/MetaMask code. Left-bottom aligned. Space Grotesk font. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #000;
+      --accent: #02ff00; /* brand green */
+      --text: #ffffff;
+      --text-dim: #cdd1d3;
+      --font: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+
+    html, body { height: 100%; }
+    html { scroll-behavior: smooth; }
+    body{
+      margin:0; background:var(--bg); color:var(--text); font-family:var(--font);
+      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+    }
+
+    .bg-video{
+      position: fixed; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;
+      background: #000;
+    }
+
+    .scrim{ position: fixed; inset:0; z-index:-1; background: linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.7)); pointer-events:none; }
+
+    .frame{ position: relative; height: 100vh; }
+
+    header{ position: absolute; top: 24px; left: 5vw; }
+    .logo{ height:40px; width:auto; display:block; }
+
+    .hero{ position: absolute; left: 5vw; bottom: 18vh; max-width: min(860px, 88vw); }
+    .title{ font-size: clamp(42px, 7vw, 92px); line-height: .98; font-weight: 700; letter-spacing: -0.01em; margin: 0 0 14px; color: var(--accent); }
+    .sub{ font-size: clamp(16px, 2.1vw, 20px); line-height: 1.5; margin: 0; max-width: 64ch; color: var(--text); font-weight: 400; }
+
+    footer{ position: absolute; left: 5vw; bottom: 4vh; font-size: 12px; color: #9aa3a7; }
+
+    @media (prefers-reduced-motion: reduce){ .bg-video{ animation: none; } }
+
+    .no-autoplay .bg-video{ display:none; }
+  </style>
+</head>
+<body>
+  <video
+    class="bg-video"
+    autoplay
+    muted
+    playsinline
+    loop
+    preload="metadata"
+    poster="https://cdn.prod.website-files.com/6865dd9c7ace7924abe05161/6865e916ec577ab3a5ec6e83_Project_Critor%20RAW_2025-07-03_03.20.12.png"
+  >
+    <source src="https://www.dl.dropboxusercontent.com/scl/fi/boiwh2zb2wvhu9ia9tpt4/Critor.mp4?rlkey=t20txysmjsgqhurnp1ikmik1n&st=9ian1khl&dl=0" type="video/mp4" />
+    <source src="https://www.dl.dropboxusercontent.com/scl/fi/boiwh2zb2wvhu9ia9tpt4/Critor.webm?rlkey=0zhubnwe5uudcxibwambzygzy&st=7xdkshqp&dl=0" type="video/webm" />
+  </video>
+  <div class="scrim" aria-hidden="true"></div>
+
+  <div class="frame">
+    <header>
+      <img class="logo" alt="Critor logo" src="https://cdn.prod.website-files.com/6865dd9c7ace7924abe05161/6865ef445f34c147a7fe51e8_Logo.png" />
+    </header>
+
+    <main class="hero" role="main">
+      <h1 class="title">Offline. Unbreakable. Yours.</h1>
+      <p class="sub">Critor Guardian 1.0 launches soon — hardware-grade security, pocket-sized freedom.</p>
+    </main>
+
+    <footer>© Critor 2025. All Rights Reserved.</footer>
+  </div>
+
+  <script>
+    (function(){
+      var v = document.querySelector('.bg-video');
+      if(!v) return;
+      v.muted = true; v.setAttribute('muted',''); v.playsInline = true; v.setAttribute('playsinline','');
+      var tryPlay = function(){
+        var p = v.play();
+        if(p && typeof p.then === 'function'){
+          p.catch(function(){ document.documentElement.classList.add('no-autoplay'); });
+        }
+      };
+      if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        tryPlay();
+      } else {
+        document.addEventListener('DOMContentLoaded', tryPlay, { once: true });
+      }
+    })();
+  </script>
+</body>
+</html>
